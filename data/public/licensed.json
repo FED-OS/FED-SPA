@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "as_of": "2026-09-07",
+  "source": "Florida Department of Health - MQA Verification Portal",
+  "source_url": "https://mqa-internet.doh.state.fl.us/MQASearchServices/HealthCareProviders",
+  "update_frequency": "annual",
+  "parlors": [
+    {
+      "license_number": "MM41109",
+      "business_name": "Halo Asian Spa, Inc",
+      "profession": "Massage Establishment",
+      "status": "Clear",
+      "expiration_date": "2027-08-31",
+      "original_issue_date": "2020-12-14",
+      "address": {
+        "street": "975 West Gateway Blvd",
+        "street2": "Suite 105",
+        "city": "Boynton Beach",
+        "state": "FL",
+        "zip": "33426"
+      },
+      "county": "Palm Beach",
+      "discipline_on_file": false,
+      "public_complaint": false,
+      "data_as_of": "2026-09-07",
+      "last_checked": "2026-09-07",
+      "verified_by": "FED-SPA annual review",
+      "notes": ""
+    }
+  ]
+}
