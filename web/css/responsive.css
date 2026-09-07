@@ -1,0 +1,72 @@
+/* ============================================================
+   FED-SPA responsive sheet.
+   Breakpoints: tablet portrait (720px), phone landscape/small
+   (560px), and tiny/one-hand (380px). Tablet & phone benefit
+   from the same document; Android Auto and Wear use the native
+   apps in android_auto/ and watch/, not this page.
+   ============================================================ */
+
+/* ---------- Tablet portrait & down ---------- */
+@media (max-width: 720px) {
+  .site-header { padding: 14px 16px; }
+  .header-meta { width: 100%; }
+  main { padding: 16px 16px 32px; }
+
+  .search-row select { flex: 1 1 100%; }
+  .parlor-top { flex-direction: column; gap: 6px; }
+  .status-badge { align-self: flex-start; }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 560px) {
+  body { font-size: 15px; }
+  .brand-text h1 { font-size: 1.15rem; }
+  .tagline { font-size: 0.72rem; }
+  .intro { margin-bottom: 14px; }
+
+  input[type="search"],
+  input[type="password"],
+  select { padding: 12px 12px; }   /* 44px targets */
+  button { padding: 12px 16px; }
+
+  .meta-row { flex-wrap: wrap; }
+
+  .parlor-card { padding: 12px 13px; }
+  .parlor-name { font-size: 0.98rem; }
+  .license-line { font-size: 0.74rem; word-break: break-all; }
+
+  .unlock-row button { flex: 1 1 100%; }
+  section.subscriber { padding: 16px 14px; }
+
+  .detail-grid { grid-template-columns: 1fr; gap: 2px; }
+  .detail-grid dt { margin-top: 8px; }
+}
+
+/* ---------- One-hand / tiny screens ---------- */
+@media (max-width: 380px) {
+  .brand-icon { width: 32px; height: 32px; }
+  .brand-text h1 { font-size: 1.05rem; }
+  .chip { font-size: 0.7rem; padding: 2px 8px; }
+  .search-row { gap: 8px; }
+}
+
+/* ---------- Large desktop: a touch more air ---------- */
+@media (min-width: 1100px) {
+  :root { --maxw: 960px; }
+  .site-header { padding-left: 32px; padding-right: 32px; }
+}
+
+/* ---------- Touch affordances ---------- */
+@media (hover: none) {
+  .parlor-name { padding: 4px 0; }
+  .parlor-card { touch-action: manipulation; }
+  button, select { min-height: 44px; }
+}
+
+/* ---------- Landscape phones: reclaim height ---------- */
+@media (max-height: 480px) and (orientation: landscape) {
+  .site-header { padding: 10px 16px; }
+  .tagline { display: none; }
+  .intro { display: none; }
+  main { padding-top: 10px; }
+}
