@@ -76,7 +76,7 @@ jobs:
           cd .. && zip -qr fedspa-src.zip FED-SPA -x "FED-SPA/data/private/unlicensed.plain.json"
           mv fedspa-src.zip "$GITHUB_WORKSPACE/"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: fedspa-src
           path: fedspa-src.zip
