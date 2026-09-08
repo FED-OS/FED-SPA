@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FED-SPA - verified licensed massage establishments in Florida. Check any spa before you walk in." />
+  <meta name="theme-color" content="#0b0e14" />
+  <title>FED-SPA - Florida Licensed Spa Verification</title>
+  <link rel="icon" href="icons/icon-192.png" type="image/png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dark-theme.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="brand">
+      <img src="icons/icon-192.png" alt="" width="40" height="40" class="brand-icon" />
+      <div class="brand-text">
+        <h1>FED-SPA</h1>
+        <p class="tagline">Florida Establishment Directory - Spa &amp; Parlor Assurance</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <span id="dataAsOf" class="chip" title="License data snapshot date">Data as of -</span>
+      <span id="dataCount" class="chip" title="Establishments in the list">0 verified</span>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="intro">
+      <p><strong>No one should ever have to wonder if they're walking into a licensed spa.</strong>
+      FED-SPA lists Florida massage establishments verified against the state's
+      official license database - updated once a year, straight from the source.</p>
+    </section>
+
+    <section class="controls" aria-label="Search and filters">
+      <div class="search-row">
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Search name, city, county, or license # (e.g. MM41109)"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Search establishments"
+        />
+        <select id="statusFilter" aria-label="Filter by status">
+          <option value="all">All statuses</option>
+          <option value="Clear">Clear</option>
+          <option value="Active">Active</option>
+          <option value="Delinquent">Delinquent</option>
+          <option value="Expired">Expired</option>
+          <option value="Inactive">Inactive</option>
+          <option value="Probation">Probation</option>
+        </select>
+      </div>
+      <div class="meta-row">
+        <span id="resultCount" class="muted" role="status">Loading&hellip;</span>
+        <button id="expandAll" class="ghost small" type="button">Expand all</button>
+      </div>
+    </section>
+
+    <section aria-label="Verified establishments">
+      <div id="errorBox" class="error hidden" role="alert"></div>
+      <ul id="parlorList" class="parlor-list" aria-live="polite"></ul>
+    </section>
+
+    <section id="subscriberSection" class="subscriber" aria-label="Subscriber access">
+      <h2>Subscriber tier</h2>
+      <p>Subscribers also see the unlicensed watchlist - Florida establishments
+      found running without a valid license, or with an expired / revoked one.
+      The list is encrypted; enter your access code to unlock it on this device.</p>
+
+      <div id="unlockForm" class="unlock-form" hidden>
+        <label for="passwordInput">Access code</label>
+        <div class="unlock-row">
+          <input
+            id="passwordInput"
+            type="password"
+            placeholder="Access code"
+            autocomplete="off"
+            aria-label="Subscriber access code"
+          />
+          <button id="unlockButton" type="button">Unlock</button>
+        </div>
+        <p id="unlockMsg" class="muted small" role="status"></p>
+        <p class="muted xsmall">
+          Wrong code simply fails to decrypt - there's no server to "log in" to.
+          Your code rotates with each annual update.
+        </p>
+      </div>
+
+      <div id="unlicensedPanel" hidden>
+        <h3>Unlicensed watchlist <span id="unlicensedCount" class="chip"></span></h3>
+        <input
+          id="unlicensedSearch"
+          type="search"
+          placeholder="Filter watchlist"
+          autocomplete="off"
+          aria-label="Filter unlicensed watchlist"
+        />
+        <ul id="unlicensedList" class="parlor-list"></ul>
+        <button id="lockButton" class="ghost small" type="button">Lock again &amp; forget code</button>
+      </div>
+
+      <div id="subscriberNotice" class="muted small">
+        Watchlist is empty in the current data snapshot. Subscribers receive an
+        access code when entries are published.
+      </div>
+    </section>
+
+    <section class="verify" aria-label="How verification works">
+      <h2>How verification works</h2>
+      <p>Every entry is checked against the Florida Department of Health
+      <abbr title="Division of Medical Quality Assurance">MQA</abbr> verification
+      portal - the same database the state runs at
+      <span class="mono">mqa-internet.doh.state.fl.us</span>. We record license
+      status, expiration, discipline flags and complaints, then re-verify the
+      entire list once per year. You can always double-check any license
+      yourself on the state portal - it's public information.</p>
+      <p class="muted">A valid state license is separate from local county/city
+      business tax receipts, which some municipalities also require.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-actions">
+      <a href='https://ko-fi.com/YOUR_USERNAME' target='_blank' rel='noopener noreferrer'>
+        <img height='36' style='border:0px;height:36px;' src='https://ko-fi.com/img/githubbutton_sm.svg' border='0' alt='Buy Me a Coffee at ko-fi.com' />
+      </a>
+    </div>
+    <p class="muted small">
+      FED-SPA is an independent project. Data reflects the Florida DOH MQA
+      database as of the snapshot date shown above and may not include changes
+      made after it. License status can change at any time - verify directly
+      with the state before relying on it. Provided as-is, without warranty.
+    </p>
+    <p class="muted xsmall">&copy; <span id="year"></span> FED-SPA &middot; Data: Florida DOH MQA portal</p>
+  </footer>
+
+  <dialog id="detailModal" class="detail-modal" aria-labelledby="modalTitle">
+    <div class="modal-head">
+      <h2 id="modalTitle">Establishment</h2>
+      <button id="modalClose" class="ghost small" type="button" aria-label="Close details">Close</button>
+    </div>
+    <div id="modalBody" class="modal-body"></div>
+  </dialog>
+
+  <script src="js/ui.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/crypto.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+/* ============================================================
+   FED-SPA dark theme - the ONLY theme.
+   Dark is not a toggle here; it's the brand. This file exists
+   so the palette can be overridden wholesale (e.g. a future
+   "print" or high-contrast sheet) without touching base styles.
+   ============================================================ */
+
+/* Reassert the palette (same tokens as style.css :root).
+   Kept in one place so a re-theme is a single-file swap. */
+:root {
+  --bg: #0b0e14;
+  --bg-raised: #131824;
+  --bg-inset: #0d1117;
+  --border: #263042;
+  --text: #e6e9ef;
+  --text-muted: #9aa4b5;
+  --text-faint: #6b7687;
+  --accent: #2dd4a7;
+  --danger: #ff5f6d;
+  --warning: #f2c14e;
+}
+
+/* Honor OS-level "force light" users gracefully: we still ship
+   dark, but drop pure-black contrasts slightly for readability. */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #11151d;
+    --bg-inset: #0e121a;
+  }
+}
+
+/* Print: the annual list should print cleanly for anyone who
+   wants a physical copy (e.g. kept in a car glovebox). */
+@media print {
+  body { background: #fff; color: #111; }
+  .site-header, .controls, .subscriber, .verify, .site-footer,
+  .search-row, .meta-row, #expandAll { display: none !important; }
+  .parlor-card { border: 1px solid #bbb; background: #fff; color: #111; break-inside: avoid; }
+  .parlor-name { color: #111; }
+  .status-badge { border: 1px solid #888 !important; }
+  .status-clear, .status-active { color: #0a7a5c !important; }
+  .status-delinquent, .status-expired, .status-inactive, .status-flag { color: #b3242f !important; }
+  .status-probation { color: #8a6d00 !important; }
+  .license-line, .parlor-sub, .muted { color: #444 !important; }
+  main { max-width: none; padding: 0; }
+  .parlor-list { gap: 6px; }
+}
+
+/* Windows High Contrast / forced-colors mode: let the OS palette win. */
+@media (forced-colors: active) {
+  .status-badge, .chip, .parlor-card, button, input, select { forced-color-adjust: none; }
+}
