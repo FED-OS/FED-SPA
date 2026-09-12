@@ -137,6 +137,10 @@
 - **Total incorporated municipalities:** 112
 - **Order:** North to south (Fort Pierce → Homestead)
 
+## Sweep coverage status — release 2026.2 (2026-09-11)
+
+The corridor's directory listings were swept against the FL DOH MQA Verification Portal on 2026-09-09/10/11 — 372 establishment listings processed, 89 checked (12 GREEN, 22 BLUE, 42 YELLOW, 13 RED), 283 still honestly unchecked. The result shipped as release `2026.2`: **47 licensed records** (St. Lucie 16 · Martin 1 · Palm Beach 26 · Broward 3 · Miami-Dade 1) and **44 watchlist entries**. Every licensed address uses the DOH Address of Record; the LAKE WORTH → Lake Worth Beach alias in the municipality list above is exactly the portal-spelling normalization the converter performs. The methodology and the inclusion bars are in [County-sweep-2026.2.md](County-sweep-2026.2.md); the numbers live in [Data-statistics.md](Data-statistics.md). The unchecked remainder is the next cycle's second corridor pass ([ROADMAP.md](../ROADMAP.md)).
+
 ## Notes / Exclusions
 - This list includes only **incorporated** cities, towns, and villages. It excludes unincorporated census-designated places (CDPs) such as Kendall, Hobe Sound, Jensen Beach, Palm City, and The Acreage — these are recognizable place names but have no municipal government.
 - "City," "town," and "village" carry no legal distinction in Florida — all three are simply different traditional labels for incorporated municipalities.
