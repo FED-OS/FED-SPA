@@ -31,6 +31,7 @@ every surface shows the "Data as of" date.
 - **[Platform surface map](Platform-surface-map.md)** — which feature exists where (search, unlock, deep links, offline…)
 - **[Crypto envelope spec](Crypto-envelope-spec.md)** — the byte-level contract all five implementations share
 - **[Annual refresh log](Annual-refresh-log.md)** — history of every data release
+- **[County sweep 2026.2](County-sweep-2026.2.md)** — methodology + inclusion bars of the first corridor sweep
 
 ## The three constraints
 

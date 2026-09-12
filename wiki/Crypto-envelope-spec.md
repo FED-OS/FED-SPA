@@ -86,7 +86,7 @@ Rules:
 - `as_of` / `version` mirror the licensed file's fields and must be kept in sync at release time.
 - `status` values for the watchlist tier: `no_license_found` | `expired` | `inactive` | `revoked` | `delinquent`.
 - `status_note` is mandatory on every watchlist record — it carries the observation ("0 matches for name+address on date X"), which is the entire honesty of this tier.
-- The `data` in the repo today is a placeholder (`records: []`); the envelope exists so the machinery is real and tested even while the watchlist is empty.
+- The envelope shipped with 2026.2 holds the sweep's 44 watchlist entries. Before that release the blob was a placeholder (`records: []`) — the machinery was real and tested even while the tier was empty.
 
 ## 5. Error contract
 

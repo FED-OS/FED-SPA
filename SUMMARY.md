@@ -12,7 +12,7 @@ Alongside the public licensed list sits a **subscriber-only watchlist**: establi
 
 1. **No backend** — static files only, refreshed once a year. No server, no API, no accounts, no logs, no bill.
 2. **No third-party** — first-party platform code only: Python stdlib, Node native crypto, vanilla JS/CSS, androidx core + appcompat, SwiftUI + CryptoKit + CommonCrypto. CI uses only GitHub-owned actions.
-3. **Annual cadence** — one human-verified data release per year, tagged `data-<year>`, with check dates on every record and no pretense of liveness.
+3. **Annual cadence** — one human-verified data release per year, tagged `data-<year>.<n>`, with check dates on every record and no pretense of liveness.
 
 Everything else in the project is downstream of these. The [ADR](ADR.md) records the reasoning; the [wiki FAQ](wiki/FAQ.md) hosts the arguments.
 
@@ -24,9 +24,9 @@ Everything else in the project is downstream of these. The [ADR](ADR.md) records
 - **`.github/` · `docs/` · `wiki/` · `discussion/` · `prompts/`** — CI (GitHub-owned actions only), the annual workflow docs, the six-page wiki, the discussions landing page, and a prompt library with the constraints baked in.
 - **Root docs** — README, USAGE, INSTALL, BUILD, DEPLOYMENT, ROADMAP, ADR, SUPPORT, SECURITY, CODE_OF_CONDUCT, PRICING, CITATIONS, COPYING, NOTICE, FAQ, GOVERNANCE, MAINTAINERS, AUTHORS, AGENTS, CLAUDE, CHANGELOG, this file.
 
-## The current release — `2026.1` (data as of 2026-09-07)
+## The current release — `2026.2` (data as of 2026-09-11)
 
-One licensed record — the seed: **Halo Asian Spa, Inc**, license MM41109, status Clear, Boynton Beach FL — and a deliberately empty watchlist envelope, so the entire subscriber machinery is live and tested without a single business exposed to a first-release bug. Coverage grows county by county from here, one documented portal check at a time ([wiki/Data-statistics.md](wiki/Data-statistics.md)).
+**47 licensed records** across five counties (St. Lucie, Martin, Palm Beach, Broward, Miami-Dade) — the first full corridor sweep from Fort Pierce to Homestead — and a live watchlist with **44 entries**, every one carrying its documented zero-match or adverse-status search ([wiki/Data-statistics.md](wiki/Data-statistics.md), [wiki/County-sweep-2026.2.md](wiki/County-sweep-2026.2.md)). 283 corridor listings remain honestly unchecked until the next pass. The licensed list is also downloadable as CSV, generated from the same source.
 
 ## What's honest about it
 
