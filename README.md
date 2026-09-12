@@ -1,6 +1,6 @@
 # FED-SPA
 
-![Uploading fed-spa-florida-asian-map.png…]()
+<img width="2560" height="1440" alt="fed-spa-florida-asian-map" src="https://github.com/user-attachments/assets/b83d9cf8-051f-4c8f-a8be-6c0eec21f42e" />
 
 **Florida Establishment Directory — Spa & Parlor Assurance**
 
