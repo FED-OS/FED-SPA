@@ -59,6 +59,14 @@ revoked/delinquent` for unlicensed), Florida-only addresses, ZIP format,
 license-number format `^[A-Z]{2}[0-9]{4,8}$`. Exits non-zero on any
 violation. Fix and repeat until clean.
 
+On the maintainer's machine both tiers validate (the plaintext watchlist
+is present during a release cycle). On a fresh clone or in CI the
+maintainer-only plaintext is correctly absent, so the validator skips that
+tier with a note and holds the line at the committed envelope — it fails
+only if `data/private/unlicensed.encrypted.json` is missing too. The
+shipped envelope's internals are covered separately by
+tests/envelope_integration_test.js.
+
 ### 4. Encrypt the subscriber tier
 
 ```bash

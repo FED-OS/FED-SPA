@@ -5,13 +5,17 @@
   "definitions": {
     "address": {
       "type": "object",
-      "required": ["street", "city", "state", "zip"],
+      "required": ["street", "city", "state"],
       "properties": {
         "street": { "type": "string", "minLength": 1 },
         "street2": { "type": ["string", "null"] },
         "city": { "type": "string", "minLength": 1 },
         "state": { "type": "string", "enum": ["FL", "fl"] },
-        "zip": { "type": "string", "pattern": "^[0-9]{5}(-[0-9]{4})?$" }
+        "zip": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9]{5}(-[0-9]{4})?$",
+          "description": "5-digit ZIP when known; null when the source listing has no ZIP on file (common for small businesses). Never guessed."
+        }
       }
     },
     "licensed_parlor": {
@@ -33,8 +37,8 @@
       "properties": {
         "license_number": {
           "type": "string",
-          "pattern": "^MA[0-9]{6}$",
-          "description": "Florida massage establishment license, e.g. MA123456 / MM41109 legacy format"
+          "pattern": "^[A-Z]{2}[0-9]{4,8}$",
+          "description": "Florida massage establishment license. Real-world DOH format is MM##### (e.g. MM41109); older records occasionally use other 2-letter prefixes. 2 uppercase letters + 4-8 digits."
         },
         "business_name": { "type": "string", "minLength": 1 },
         "profession": { "type": "string", "const": "Massage Establishment" },
