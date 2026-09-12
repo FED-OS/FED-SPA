@@ -1,5 +1,7 @@
 # FED-SPA
 
+![Uploading fed-spa-florida-asian-map.png…]()
+
 **Florida Establishment Directory — Spa & Parlor Assurance**
 
 A no-backend, once-a-year directory of licensed massage establishments in the State of Florida — verified against the Florida DOH Medical Quality Assurance (MQA) portal — plus a subscriber-only, client-side-encrypted watchlist of businesses we could not find a license for.
