@@ -2,9 +2,12 @@
 """
 FED-SPA schema validator - pure standard library.
 
-Validates data/public/licensed.json and data/private/unlicensed.plain.json
-against the rules declared in data/meta/schema.json. Deliberately hand-rolled
-(no jsonschema package) so it runs anywhere Python 3 exists.
+Validates data/public/licensed.json and (when present) data/private/
+unlicensed.plain.json against the rules declared in data/meta/schema.json.
+Deliberately hand-rolled (no jsonschema package) so it runs anywhere Python 3
+exists. The plaintext watchlist is maintainer-only and never committed, so a
+fresh checkout validates the licensed tier and skips the watchlist with a
+note — the shipped envelope is covered by tests/envelope_integration_test.js.
 
 Exits non-zero on the first file that fails, printing every problem found.
 
@@ -61,13 +64,18 @@ def check_address(where: str, addr) -> None:
     if not isinstance(addr, dict):
         err(f"{where}: address must be an object, got {type(addr).__name__}")
         return
-    for key in ("street", "city", "state", "zip"):
+    for key in ("street", "city", "state"):
         if key not in addr or not isinstance(addr[key], str) or not addr[key].strip():
             err(f"{where}: address.{key} missing or empty")
     if isinstance(addr.get("state"), str) and addr["state"] != "FL":
         err(f"{where}: address.state must be 'FL' (FL-only dataset)")
-    if isinstance(addr.get("zip"), str) and not ZIP_RE.match(addr["zip"]):
-        err(f"{where}: address.zip '{addr['zip']}' is not a FL zip format")
+    # zip is optional-but-validated: many verified small businesses have no ZIP
+    # in their source listing. We carry what the portal shows, never a guess.
+    zip_val = addr.get("zip")
+    if zip_val is None or zip_val == "":
+        pass  # legitimately unknown; the UI renders city, state only
+    elif not isinstance(zip_val, str) or not ZIP_RE.match(zip_val):
+        err(f"{where}: address.zip '{zip_val}' is not a FL zip format")
 
 
 def validate_licensed(path: Path) -> bool:
@@ -147,7 +155,18 @@ def main() -> int:
     global problems
     base = len(problems)
     a = validate_licensed(ROOT / "data" / "public" / "licensed.json")
-    b = validate_unlicensed(ROOT / "data" / "private" / "unlicensed.plain.json")
+    plain = ROOT / "data" / "private" / "unlicensed.plain.json"
+    if plain.exists():
+        b = validate_unlicensed(plain)
+    else:
+        # The plaintext watchlist is maintainer-only and NEVER committed
+        # (see .gitignore). A fresh clone/CI checkout carries only the
+        # encrypted envelope, so there is nothing to validate at this tier
+        # until the maintainer holds the plaintext during a release cycle.
+        # Fail loudly only if the committed envelope is missing too.
+        print("Skipping data/private/unlicensed.plain.json — maintainer-only file, never committed.")
+        if not (ROOT / "data" / "private" / "unlicensed.encrypted.json").exists():
+            err("data/private/unlicensed.encrypted.json (the committed envelope) does not exist")
     if problems:
         print(f"\nFAILED with {len(problems)} problem(s). Fix the data and re-run.")
         return 1
